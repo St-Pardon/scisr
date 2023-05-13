@@ -1,7 +1,10 @@
-function isValidUrl(str: string): boolean {
-  const urlPattern = new RegExp('^(ftp|http|https)://[^ "]+$');
-
-  return urlPattern.test(str);
+function isValidUrl(url: string): boolean {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 export default isValidUrl;
