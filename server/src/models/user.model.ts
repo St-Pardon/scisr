@@ -1,8 +1,9 @@
-import {Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 import bcrypt from 'bcrypt';
 
 // Define user schema
 const userSchema = new Schema({
+  _id: { type: Types.ObjectId, auto: true },
   created_at: {
     type: Date,
     default: Date.now,
@@ -27,6 +28,15 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  photo: {
+    type: String,
+  },
+  provider: {
+    type: String,
+  },
+  provider_id: {
+    type: String,
   },
 });
 
