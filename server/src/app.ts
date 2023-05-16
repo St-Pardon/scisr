@@ -18,6 +18,8 @@ app
       saveUninitialized: false,
     })
   )
+  .set('views', 'views')
+  .set('view engine', 'ejs')
   .use(passport.initialize())
   .use(passport.session())
   .use(indexRoute)
