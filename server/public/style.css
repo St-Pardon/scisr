@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Roboto:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+/* header elements  */
+.header,
+.nav {
+  display: flex;
+}
+.header {
+  width: 100%;
+  align-items: center;
+}
+.header div,
+.nav {
+  width: 48%;
+  margin: 5px 10px;
+}
+.nav {
+  justify-content: flex-end;
+}
+.header .logo {
+  width: 30px;
+  height: 30px;
+}
+.header h3 {
+  font-family: 'Bruno Ace', cursive;
+  font-size: 1.4rem;
+}
+.signin {
+  padding: 10px 25px;
+  border: 2px solid green;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+.signin:hover {
+  background-color: white;
+  color: green;
+}
+.phrase {
+  display: none;
+}
+
+/* main elements  */
+.intro {
+  text-align: center;
+  margin: 30px 0 0 0;
+}
+.intro h1 {
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+.intro h1 span {
+  font-family: 'Bruno Ace', cursive;
+  color: green;
+}
+.intro p {
+  font-size: 1.3rem;
+  max-width: 1000px;
+  width: 95%;
+  margin: 0 auto;
+}
+
