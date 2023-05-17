@@ -18,6 +18,7 @@ app
       saveUninitialized: false,
     })
   )
+  .use(express.static('public'))
   .set('views', 'views')
   .set('view engine', 'ejs')
   .use(passport.initialize())
