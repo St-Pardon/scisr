@@ -7,7 +7,7 @@ import urlModel from '../models/url.model';
 const Shortener = Router();
 
 Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
-  res.status(200).render('index');
+  res.status(200).render('index', { url: '' });
 })
   .post(
     '',
@@ -25,23 +25,31 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
         return;
       }
 
-      const shorten_code: string = phrase.toLowerCase() || randomStr();
+      const shorten_code: string = phrase ? phrase.toLowerCase() :  randomStr();
       const qrcode: string = await generateQR(
-        `http:127.0.0.1:5353/${shorten_code}`
+        `http://127.0.0.1:5353/${shorten_code}`
       );
 
       if (user_id) {
         await urlModel.create({
           original_url,
-          shortened_url: `http:127.0.0.1:5353/${shorten_code}`,
+          shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
           qrcode,
         });
       }
       // db.push({ originalUrl: url, shortenUrl: str, qrcode: qrcode });
-      res.status(201).json({
-        original_url,
-        shortened_url: `http:127.0.0.1:5353/${shorten_code}`,
-        qrcode,
+      res.status(201)
+      // .json({
+      //   original_url,
+      //   shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+      //   qrcode,
+      // });
+      res.render('index', {
+        url: {
+          original_url,
+          shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+          qrcode,
+        },
       });
     }
   )

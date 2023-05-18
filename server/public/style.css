@@ -53,7 +53,7 @@
 /* main elements  */
 .intro {
   text-align: center;
-  margin: 30px 0 0 0;
+  margin: 50px 0 0 0;
 }
 .intro h1 {
   font-size: 2rem;
@@ -69,4 +69,58 @@
   width: 95%;
   margin: 0 auto;
 }
+.hero{
+    width: 300px;
+}
+.form{
+    margin: 50px 0 0 0;
+}
+.form div, .form fieldset{
+    max-width: 1000px;
+    width: 90%;
+    margin: 0px auto;
+}
+.form fieldset{
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    overflow: hidden;
+}
+#url{
+    padding: 10px 10px;
+    font-size: 2rem;
+    outline: transparent;
+    border: none;
+}
+.form fieldset button{
+    background-color: unset;
+    border: none;
+}
+.form div{
+    text-align: center;
+}
 
+
+.shortened{
+    background-color: cyan;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 30px;
+}
+
+.shortened p{
+    font-style: italic;
+}
+
+
+/* footer  */
+.footer{
+    text-align: center;
+}
