@@ -69,58 +69,109 @@
   width: 95%;
   margin: 0 auto;
 }
-.hero{
-    width: 300px;
+.hero {
+  width: 300px;
 }
-.form{
-    margin: 50px 0 0 0;
+.form {
+  margin: 50px 0 0 0;
 }
-.form div, .form fieldset{
-    max-width: 1000px;
-    width: 90%;
-    margin: 0px auto;
+.form div,
+.form fieldset {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0px auto;
 }
-.form fieldset{
-    max-width: 800px;
-    width: 100%;
-    margin-bottom: 5px;
-    border-radius: 30px;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    overflow: hidden;
+.form fieldset {
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  overflow: hidden;
 }
-#url{
-    padding: 10px 10px;
-    font-size: 2rem;
-    outline: transparent;
-    border: none;
+#url {
+  padding: 10px 10px;
+  font-size: 2rem;
+  outline: transparent;
+  border: none;
 }
-.form fieldset button{
-    background-color: unset;
-    border: none;
+.form fieldset button {
+  background-color: unset;
+  border: none;
 }
-.form div{
-    text-align: center;
+.form div {
+  text-align: center;
 }
 
+.shortened {
+  background-color: cyan;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 30px;
+  font-size: 1.7rem;
+  height: 68px;
+}
 
-.shortened{
-    background-color: cyan;
+.shortened p {
+  font-style: italic;
+}
+.shortened i {
+  display: none;
+}
+
+.shortened:hover > i {
+  display: block;
+}
+
+.qrcode {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.qrcode img {
+  width: 100%;
+}
+
+.qrcode a {
+  color: black;
+  text-decoration: none;
+}
+
+.qrcode figcaption {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+.icon,
+.qrcode .icon {
+  width: 30px;
+}
+.qrcode .icon {
+  width: 15px;
+}
+
+/* login */
+.login{
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    max-width: 800px;
-    width: 100%;
-    margin: 20px auto;
-    border-radius: 30px;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #f1f1f1;
+    padding: 10px;
+    width: 215px;
 }
-
-.shortened p{
-    font-style: italic;
+.login img{
+    width: 30px
 }
 
 
 /* footer  */
-.footer{
-    text-align: center;
+.footer {
+  text-align: center;
 }
