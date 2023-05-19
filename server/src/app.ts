@@ -27,7 +27,7 @@ app
 
   .get('/login', (req: Request, res: Response): void => {
     console.log(req.url);
-    res.status(200).send('kindly login');
+    res.status(200).render('login');
   })
   .get('/success', (req: Request & { user?: any }, res: Response) => {
     console.log(req.user);

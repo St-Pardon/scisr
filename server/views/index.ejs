@@ -39,6 +39,7 @@
           driven analytic tools
         </p>
       </section>
+      <% if (!url) { %>
       <form class="form" action="/" method="post">
         <fieldset>
           <input type="text" name="original_url" id="url" placeholder="Enter the url" />
@@ -99,18 +100,19 @@
           />
         </div>
       </form>
+      <% } %>
       <section class="result">
         <% if (url) { %>
-        <figure>
+        <figure class="qrcode">
           <img src=<%=url.qrcode%> alt="qrcode" />
           <a href=<%=url.qrcode%> type="image/png" download="qrcode.png"
-            ><figcaption>Download</figcaption>
+            ><figcaption><img src="assets/file-download-svgrepo-com.svg" alt="download" class="icon"> Download</figcaption>
           </a>
         </figure>
-        <h3>Shortnened Link</h3>
+        <!-- <h3>Shortnened Link</h3> -->
         <div class="shortened">
-          <p><%=url.shortened_url%></p>
-          <i class="copy">copy</i>
+          <p class="s_url"><%=url.shortened_url%></p>
+          <i class="copy"><img src="assets/copy-svgrepo-com.svg" alt="copy" title="copy" class="icon"></i>
         </div>
         <% } %>
       </section>
