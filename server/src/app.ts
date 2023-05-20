@@ -31,7 +31,15 @@ app
   })
   .get('/success', (req: Request & { user?: any }, res: Response) => {
     console.log(req.user);
-    res.send(`Welcome ${req.user?.email}`);
+    res.render('index', {
+      url: {
+        user: {
+          email: req.user?.email,
+          name: `${req.user?.first_name} ${req.user.last_name}`,
+          dp: req.user?.photo,
+        },
+      },
+    });
   });
 
 export default app;

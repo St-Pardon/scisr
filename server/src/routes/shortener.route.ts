@@ -25,7 +25,7 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
         return;
       }
 
-      const shorten_code: string = phrase ? phrase.toLowerCase() :  randomStr();
+      const shorten_code: string = phrase ? phrase.toLowerCase() : randomStr();
       const qrcode: string = await generateQR(
         `http://127.0.0.1:5353/${shorten_code}`
       );
@@ -38,7 +38,7 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
         });
       }
       // db.push({ originalUrl: url, shortenUrl: str, qrcode: qrcode });
-      res.status(201)
+      res.status(201);
       // .json({
       //   original_url,
       //   shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
@@ -46,9 +46,11 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
       // });
       res.render('index', {
         url: {
-          original_url,
-          shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
-          qrcode,
+          res: {
+            original_url,
+            shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+            qrcode,
+          },
         },
       });
     }
