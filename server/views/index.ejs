@@ -19,6 +19,10 @@
           Scisr
         </h3>
       </div>
+      <% if (url.user){ %>
+        <img src=<%=url.user.dp%> alt="dp" width="50px">
+        <p><%=url.user.name%></p>
+      <% } %>
       <nav class="nav">
         <a href="/login"><button class="signin">Signin</button></a>
       </nav>
@@ -39,7 +43,7 @@
           driven analytic tools
         </p>
       </section>
-      <% if (!url) { %>
+      <% if (!url.res) { %>
       <form class="form" action="/" method="post">
         <fieldset>
           <input type="text" name="original_url" id="url" placeholder="Enter the url" />
@@ -102,16 +106,16 @@
       </form>
       <% } %>
       <section class="result">
-        <% if (url) { %>
+        <% if (url.res) { %>
         <figure class="qrcode">
-          <img src=<%=url.qrcode%> alt="qrcode" />
-          <a href=<%=url.qrcode%> type="image/png" download="qrcode.png"
+          <img src=<%=url.res.qrcode%> alt="qrcode" />
+          <a href=<%=url.res.qrcode%> type="image/png" download="qrcode.png"
             ><figcaption><img src="assets/file-download-svgrepo-com.svg" alt="download" class="icon"> Download</figcaption>
           </a>
         </figure>
         <!-- <h3>Shortnened Link</h3> -->
         <div class="shortened">
-          <p class="s_url"><%=url.shortened_url%></p>
+          <p class="s_url"><%=url.res.shortened_url%></p>
           <i class="copy"><img src="assets/copy-svgrepo-com.svg" alt="copy" title="copy" class="icon"></i>
         </div>
         <% } %>
