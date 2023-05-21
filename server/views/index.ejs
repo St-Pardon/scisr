@@ -20,12 +20,16 @@
         </h3>
       </div>
       <% if (url.user){ %>
-        <img src=<%=url.user.dp%> alt="dp" width="50px">
+      <nav class="nav">
+        <img src=<%=url.user.dp%> alt="dp" width="40px">
         <p><%=url.user.name%></p>
+      </nav>
       <% } %>
+      <% if (!url.user){ %>
       <nav class="nav">
         <a href="/login"><button class="signin">Signin</button></a>
       </nav>
+      <% } %>
 
       <!-- // auth username and photo -->
     </header>
@@ -120,6 +124,19 @@
         </div>
         <% } %>
       </section>
+      <% if (url.user) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Date Created</th>
+              <th>Original URL</th>
+              <th>Shortnened URL</th>
+              <th>clicks</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      <%} %>
       <section>rest of the site.</section>
     </main>
     <footer class="footer">
