@@ -13,7 +13,7 @@ Auth.get(
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
     // Redirect the user to the home page or any other desired route
-    res.redirect('/success');
+    res.redirect('/');
   }
 );
 

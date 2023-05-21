@@ -7,13 +7,23 @@ import urlModel from '../models/url.model';
 const Shortener = Router();
 
 Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
-  res.status(200).render('index', { url: '' });
+  res.status(200).render('index', {
+    url: {
+      user: req.user
+        ? {
+            email: req.user?.email,
+            name: `${req.user?.first_name} ${req.user.last_name}`,
+            dp: req.user?.photo,
+          }
+        : '',
+    },
+  });
 })
   .post(
     '',
     async (req: Request & { user?: any }, res: Response): Promise<void> => {
       console.log(req.user);
-      const { original_url, phrase, user_id } = req.body;
+      const { original_url, phrase } = req.body;
 
       if (!original_url) {
         res.status(400).json({ err: 'Please provide a url' });
@@ -30,27 +40,34 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
         `http://127.0.0.1:5353/${shorten_code}`
       );
 
-      if (user_id) {
-        await urlModel.create({
+      if (req.user?.email) {
+        const urlExist = await urlModel.findOne({
           original_url,
-          shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
-          qrcode,
+          user_id: req.user.email,
         });
+        if (!urlExist) {
+          await urlModel.create({
+            user_id: req.user.email,
+            original_url,
+            shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+            qrcode,
+          });
+        }
       }
-      // db.push({ originalUrl: url, shortenUrl: str, qrcode: qrcode });
-      res.status(201);
-      // .json({
-      //   original_url,
-      //   shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
-      //   qrcode,
-      // });
-      res.render('index', {
+      res.status(201).render('index', {
         url: {
           res: {
             original_url,
             shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
             qrcode,
           },
+          user: req.user
+            ? {
+                email: req.user?.email,
+                name: `${req.user?.first_name} ${req.user?.last_name}`,
+                dp: req.user?.photo,
+              }
+            : '',
         },
       });
     }

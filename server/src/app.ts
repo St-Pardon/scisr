@@ -30,7 +30,7 @@ app
     res.status(200).render('login');
   })
   .get('/success', (req: Request & { user?: any }, res: Response) => {
-    console.log(req.user);
+    // console.log(req.user);
     res.render('index', {
       url: {
         user: {

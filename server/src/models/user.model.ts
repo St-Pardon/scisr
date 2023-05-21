@@ -1,9 +1,9 @@
 import { Schema, model, Types } from 'mongoose';
 import bcrypt from 'bcrypt';
+import { IUser } from '../utils/types.utils';
 
 // Define user schema
-const userSchema = new Schema({
-  _id: { type: Types.ObjectId, auto: true },
+const userSchema: Schema<IUser> = new Schema<IUser>({
   created_at: {
     type: Date,
     default: Date.now,
@@ -64,6 +64,6 @@ userSchema.set('toJSON', {
 });
 
 // Create user model from schema
-const User = model('User', userSchema);
+const User = model<IUser>('User', userSchema);
 
 export default User;

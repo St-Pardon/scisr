@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 export interface urldb {
   originalUrl?: string;
   shortenUrl?: string;
@@ -16,4 +18,16 @@ export interface authConfig {
   authorizationParams: {
     [scope: string]: string
   },
+}
+
+export interface IUser extends Document {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  created_at: Date;
+  updated_at: Date;
+  photo: string;
+  provider: string;
+  provider_id: string;
 }

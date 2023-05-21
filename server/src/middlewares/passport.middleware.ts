@@ -14,7 +14,7 @@ passport.use(
 
         if (existingUser) {
           // User already exists, call the done() callback
-          done(null, profile);
+          done(null, existingUser);
         } else {
           // Create a new user and save it to the database
           const newUser = new User({
