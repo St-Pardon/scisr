@@ -31,3 +31,18 @@ export interface IUser extends Document {
   provider: string;
   provider_id: string;
 }
+
+export interface IURL extends Document {
+  created_at: Date;
+  updated_at: Date;
+  user_id: string;
+  original_url: string;
+  shortened_url: string;
+  qrcode: string;
+  clicks: number;
+  location?: string;
+  client?: string;
+  moment?: string;
+}
+
+export interface IURLArray extends Array<IURL> {}

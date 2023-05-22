@@ -3,26 +3,43 @@ import isValidUrl from '../utils/validate-url.utils';
 import randomStr from '../utils/random-str.utils';
 import { generateQR } from '../utils/generateQR.utils';
 import urlModel from '../models/url.model';
+import { IURLArray } from '../utils/types.utils';
+import moment from 'moment';
 
 const Shortener = Router();
 
-Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
-  res.status(200).render('index', {
-    url: {
-      user: req.user
-        ? {
-            email: req.user?.email,
-            name: `${req.user?.first_name} ${req.user.last_name}`,
-            dp: req.user?.photo,
-          }
-        : '',
-    },
-  });
-})
+Shortener.get(
+  '',
+  async (req: Request & { user?: any }, res: Response): Promise<void> => {
+    let data: IURLArray = [];
+
+    if (req.user) {
+      data = await urlModel.find({ user_id: req.user?.email }).exec();
+    }
+
+    // change creation date to moment 
+    const history = data.map((item) => ({
+      ...item,
+      moment: moment(item.created_at).fromNow(),
+    }));
+
+    res.status(200).render('index', {
+      url: {
+        user: req.user
+          ? {
+              email: req.user?.email,
+              name: `${req.user?.first_name} ${req.user.last_name}`,
+              dp: req.user?.photo,
+            }
+          : '',
+        history,
+      },
+    });
+  }
+)
   .post(
     '',
     async (req: Request & { user?: any }, res: Response): Promise<void> => {
-      console.log(req.user);
       const { original_url, phrase } = req.body;
 
       if (!original_url) {
@@ -45,6 +62,7 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
           original_url,
           user_id: req.user.email,
         });
+
         if (!urlExist) {
           await urlModel.create({
             user_id: req.user.email,
@@ -72,9 +90,11 @@ Shortener.get('', (req: Request & { user?: any }, res: Response): void => {
       });
     }
   )
-  .get(':shorten_url', async (req: Request, res: Response): Promise<void> => {
+  .get('/:shorten_url', async (req: Request, res: Response): Promise<void> => {
     const { shorten_url } = req.params;
-    const url = await urlModel.findOne({ shorten_url: shorten_url });
+    const url = await urlModel.findOne({
+      shortened_url: `http://127.0.0.1:5353/${shorten_url}`,
+    });
 
     if (!url) {
       res.status(404).json({ err: 'url not found' });

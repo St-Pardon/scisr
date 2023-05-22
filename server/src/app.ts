@@ -24,22 +24,6 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use(indexRoute)
-
-  .get('/login', (req: Request, res: Response): void => {
-    console.log(req.url);
-    res.status(200).render('login');
-  })
-  .get('/success', (req: Request & { user?: any }, res: Response) => {
-    // console.log(req.user);
-    res.render('index', {
-      url: {
-        user: {
-          email: req.user?.email,
-          name: `${req.user?.first_name} ${req.user.last_name}`,
-          dp: req.user?.photo,
-        },
-      },
-    });
-  });
+  
 
 export default app;

@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
+import { IURL } from '../utils/types.utils';
 
-const URLSchema = new Schema({
+const URLSchema: Schema<IURL> = new Schema<IURL>({
   created_at: {
     type: Date,
     default: Date.now,
