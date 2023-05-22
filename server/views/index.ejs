@@ -27,7 +27,8 @@
       <% } %>
       <% if (!url.user){ %>
       <nav class="nav">
-        <a href="/login"><button class="signin">Signin</button></a>
+        <a href="#"><p>Docs</p></a>
+        <a href="/auth/login"><button class="signin">Signin</button></a>
       </nav>
       <% } %>
 
@@ -124,19 +125,34 @@
         </div>
         <% } %>
       </section>
-      <% if (url.user) { %>
+      <section  class="history">
+      <% if (url.user && url.history) { %>
         <table>
           <thead>
             <tr>
-              <th>Date Created</th>
+              <th>QRCode</th>
               <th>Original URL</th>
               <th>Shortnened URL</th>
               <th>clicks</th>
+              <th>Date Created</th>
+              <th>Details</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <% url.history.forEach(function(url){ %>
+              <tr>
+                <td><img src=<%= url._doc.qrcode %> alt="qrcode"> </td>
+                <td><a href=<%= url._doc.original_url %> target="_blank"><%= url._doc.original_url %></a></td>
+                <td><a href=<%= url._doc.shortened_url %> target="_blank"><%= url._doc.shortened_url %></a></td>
+                <td><%= url._doc.clicks %></td>
+                <td><%= url.moment %></td>
+                <td><a href='/analytics'><button class="btn">More</button></a></td>
+              </tr>
+            <% }); %>
+          </tbody>
         </table>
       <%} %>
+    </section>
       <section>rest of the site.</section>
     </main>
     <footer class="footer">
