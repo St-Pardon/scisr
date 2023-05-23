@@ -202,6 +202,10 @@ a {
 }
 
 /* history  */
+.history{
+  margin: 50px auto;
+}
+
 .history table {
   width: 80%;
   margin: 0 auto;
@@ -233,6 +237,7 @@ a {
   background-color: white;
   color: #6c63ff;
 }
+
 
 /* footer  */
 .footer {

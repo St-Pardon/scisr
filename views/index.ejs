@@ -103,7 +103,7 @@
           <label for="phrase">Enter your custorm word</label>
           <input
             type="text"
-            name="pharse"
+            name="phrase"
             id="phrase"
             placeholder="eg. lunch, meet, fest"
           />
@@ -111,19 +111,28 @@
       </form>
       <% } %>
       <section class="result">
-        <% if (url.res) { %>
+      <% if (url.res) { %>
         <figure class="qrcode">
           <img src=<%=url.res.qrcode%> alt="qrcode" />
           <a href=<%=url.res.qrcode%> type="image/png" download="qrcode.png"
             ><figcaption><img src="assets/file-download-svgrepo-com.svg" alt="download" class="icon"> Download</figcaption>
           </a>
         </figure>
-        <!-- <h3>Shortnened Link</h3> -->
         <div class="shortened">
           <p class="s_url"><%=url.res.shortened_url%></p>
           <i class="copy"><img src="assets/copy-svgrepo-com.svg" alt="copy" title="copy" class="icon"></i>
         </div>
+        <% if (url.user) { %>
+        <div style="text-align: center;">
+          <a href="/"><button class="btn his-btn">View history</button></a>
+        </div>
         <% } %>
+        <% if (!url.user) { %>
+        <div style="text-align: center;">
+          <a href="/auth/login"><button class="btn his-btn">Signup to see analytics</button></a>
+        </div>
+        <% } %>
+      <% } %>
       </section>
       <section  class="history">
       <% if (url.user && url.history) { %>
@@ -153,7 +162,7 @@
         </table>
       <%} %>
     </section>
-      <section>rest of the site.</section>
+      <!-- <section>rest of the site.</section> -->
     </main>
     <footer class="footer">
       <p>
