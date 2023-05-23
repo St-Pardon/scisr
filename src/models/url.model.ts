@@ -12,7 +12,6 @@ const URLSchema: Schema<IURL> = new Schema<IURL>({
   },
   user_id: {
     type: String,
-    required: true,
   },
   original_url: {
     type: String,
