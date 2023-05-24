@@ -88,7 +88,6 @@ passport
         try {
           const data = req.body;
           const { username } = req.body;
-
           // checks if user's username or email already exist
           const checkUsername = await User.findOne({ username });
           const checkMail = await User.findOne({ email });
@@ -116,15 +115,12 @@ passport
     'signin',
     new localStrategy(
       {
-        usernameField: 'username',
+        usernameField: 'email',
         passwordField: 'password',
       },
       async (email, password, done) => {
         try {
-          // const user = await userModel.findOne({ email: email })
-          const user = email.includes('@')
-            ? await User.findOne({ email })
-            : await User.findOne({ username: email });
+          const user = await User.findOne({ email: email })
 
           if (!user) {
             return done(null, false, { message: 'User not found' });
