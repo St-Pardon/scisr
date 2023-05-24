@@ -30,6 +30,7 @@ export interface IUser extends Document {
   photo: string;
   provider: string;
   provider_id: string;
+  isValidPassword(password: string): Promise<boolean>;
 }
 
 export interface IURL extends Document {
