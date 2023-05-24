@@ -4,6 +4,7 @@ import indexRoute from './routes/index.route';
 import passport from 'passport';
 import session from 'express-session';
 import './middlewares/passport.middleware';
+import APIRoute from './api/index.api';
 
 const app: Application = express();
 
@@ -23,6 +24,7 @@ app
   .set('view engine', 'ejs')
   .use(passport.initialize())
   .use(passport.session())
+  .use("/api", APIRoute)
   .use(indexRoute)
   
 
