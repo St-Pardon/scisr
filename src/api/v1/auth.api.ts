@@ -1,7 +1,11 @@
-import { Router } from "express";
+import { Router } from 'express';
+import AuthController from '../../controllers/auth.controller';
 
-const AuthAPI = Router()
+const AuthAPI = Router();
 
-AuthAPI.post('/signin').post('/signup')
+AuthAPI.post('/signin', AuthController.signin).post(
+  '/signup',
+  AuthController.signup
+);
 
-export default AuthAPI
+export default AuthAPI;
