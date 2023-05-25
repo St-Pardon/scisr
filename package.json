@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
+    "@types/passport-anonymous": "^1.0.3",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -45,6 +46,7 @@
     "moment": "^2.29.4",
     "mongoose": "^7.1.1",
     "passport": "^0.6.0",
+    "passport-anonymous": "^1.0.1",
     "passport-google-oauth2": "^0.2.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
