@@ -7,6 +7,7 @@ import {
   ExtractJwt as ExtractJWT,
   Strategy as JWTstrategy,
 } from 'passport-jwt';
+import { Strategy as AnonymousStrategy} from 'passport-anonymous'
 
 passport.use(
   new GoogleStrategy(
@@ -36,7 +37,7 @@ passport.use(
           done(null, savedUser);
         }
       } catch (error) {
-          done(error, null);
+        done(error, null);
       }
     }
   )
@@ -56,6 +57,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 passport
+  .use(new AnonymousStrategy())
   .use(
     new JWTstrategy(
       {
@@ -101,7 +103,7 @@ passport
           }
 
           const user = await User.create({ ...data, email, password });
-          
+
           return done(null, user);
         } catch (error) {
           console.log('some err');
@@ -120,7 +122,7 @@ passport
       },
       async (email, password, done) => {
         try {
-          const user = await User.findOne({ email: email })
+          const user = await User.findOne({ email: email });
 
           if (!user) {
             return done(null, false, { message: 'User not found' });
