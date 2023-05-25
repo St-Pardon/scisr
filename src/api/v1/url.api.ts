@@ -4,6 +4,18 @@ import passport from 'passport';
 
 const UrlRoute = Router();
 
-UrlRoute.get('/', passport.authenticate('jwt', { session: false }), URLController.getURL).get('/:id').get('/history').post('/').delete('/:url_id');
+UrlRoute.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  URLController.getURL
+)
+  .get('/:id', URLController.getById)
+  //   .get('/history')
+  .post(
+    '/',
+    passport.authenticate(['jwt', 'anonymous']),
+    URLController.shortenURL
+  )
+  .delete('/:id', URLController.deleteById);
 
-export default UrlRoute
+export default UrlRoute;
