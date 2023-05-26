@@ -5,6 +5,7 @@ import { generateQR } from '../utils/generateQR.utils';
 import urlModel from '../models/url.model';
 import { IURLArray } from '../utils/types.utils';
 import moment from 'moment';
+import URLController from '../controllers/url.controller';
 
 const Shortener = Router();
 
@@ -17,7 +18,7 @@ Shortener.get(
       data = await urlModel.find({ user_id: req.user?.email }).exec();
     }
 
-    // change creation date to moment 
+    // change creation date to moment
     const history = data.map((item) => ({
       ...item,
       moment: moment(item.created_at).fromNow(),
@@ -65,7 +66,7 @@ Shortener.get(
         });
       }
 
-      if (urlExist){
+      if (urlExist) {
         res.status(201).render('index', {
           url: {
             res: {
@@ -85,14 +86,12 @@ Shortener.get(
         return;
       }
 
-      // if (req.user?.email && !urlExist) {
-        await urlModel.create({
-          user_id: req.user ? req.user.email : '',
-          original_url,
-          shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
-          qrcode,
-        });
-      // }
+      await urlModel.create({
+        user_id: req.user ? req.user.email : '',
+        original_url,
+        shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+        qrcode,
+      });
 
       res.status(201).render('index', {
         url: {
@@ -112,23 +111,6 @@ Shortener.get(
       });
     }
   )
-  .get('/:shorten_url', async (req: Request, res: Response): Promise<void> => {
-    const { shorten_url } = req.params;
-    const url = await urlModel.findOne({
-      shortened_url: `http://127.0.0.1:5353/${shorten_url}`,
-    });
-
-    if (!url) {
-      res.status(404).json({ err: 'url not found' });
-      return;
-    }
-
-    url.clicks = url.clicks + 1;
-    await url.save();
-
-    res.status(302);
-    res.setHeader('Location', url.original_url);
-    res.end();
-  });
+  .get('/:shorten_url', URLController.redirectURL);
 
 export default Shortener;

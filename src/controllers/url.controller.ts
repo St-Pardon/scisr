@@ -70,6 +70,13 @@ class URLController {
     res.status(200).send('url deleted');
   }
 
+  /**
+   * shortens url
+   * @param req
+   * @param res
+   * @param next
+   * @returns
+   */
   static async shortenURL(
     req: Request & { user?: any },
     res: Response,
@@ -115,6 +122,31 @@ class URLController {
     });
 
     res.status(201).send(data);
+  }
+
+  /**
+   * redirects users to the original url
+   * @param req 
+   * @param res 
+   * @returns 
+   */
+  static async redirectURL(req: Request, res: Response): Promise<void> {
+    const { shorten_url } = req.params;
+    const url = await urlModel.findOne({
+      shortened_url: `http://127.0.0.1:5353/${shorten_url}`,
+    });
+
+    if (!url) {
+      res.status(404).json({ err: 'url not found' });
+      return;
+    }
+
+    url.clicks = url.clicks + 1;
+    await url.save();
+
+    res.status(302);
+    res.setHeader('Location', url.original_url);
+    res.end();
   }
 }
 
