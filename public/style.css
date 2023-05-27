@@ -202,16 +202,19 @@ a {
 }
 
 /* history  */
-.history{
+.history {
   margin: 50px auto;
+  max-width: 1240px;
+  width: 100%;
 }
 
 .history table {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   border: none;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   text-align: left;
+  text-align: center;
 }
 
 .history table thead {
@@ -238,6 +241,23 @@ a {
   color: #6c63ff;
 }
 
+/* analytics  */
+.main_analytic {
+  text-align: center;
+}
+
+.btn2 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.icon2 {
+  width: 20px;
+}
+.downl{
+  display: flex;
+  justify-content: center;
+}
 
 /* footer  */
 .footer {

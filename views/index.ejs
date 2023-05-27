@@ -137,12 +137,20 @@
       <section  class="history">
       <% if (url.user && url.history) { %>
         <table>
+          <colgroup>
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 5%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 15%;">
+          </colgroup>
           <thead>
             <tr>
               <th>QRCode</th>
-              <th>Original URL</th>
+              <th class="long">Original URL</th>
               <th>Shortnened URL</th>
-              <th>clicks</th>
+              <th>Clicks</th>
               <th>Date Created</th>
               <th>Details</th>
             </tr>
@@ -151,11 +159,11 @@
             <% url.history.forEach(function(url){ %>
               <tr>
                 <td><img src=<%= url._doc.qrcode %> alt="qrcode"> </td>
-                <td><a href=<%= url._doc.original_url %> target="_blank"><%= url._doc.original_url %></a></td>
+                <td class="long"><a href=<%= url._doc.original_url %> target="_blank"><%= url._doc.original_url %></a></td>
                 <td><a href=<%= url._doc.shortened_url %> target="_blank"><%= url._doc.shortened_url %></a></td>
                 <td><%= url._doc.clicks %></td>
                 <td><%= url.moment %></td>
-                <td><a href='/analytics'><button class="btn">More</button></a></td>
+                <td><a href='/analytics/<%= url._doc._id %>'><button class="btn">More</button></a></td>
               </tr>
             <% }); %>
           </tbody>
