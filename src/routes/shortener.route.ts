@@ -23,7 +23,7 @@ Shortener.get(
       ...item,
       moment: moment(item.created_at).fromNow(),
     }));
-    console.log(history)
+    
     res.status(200).render('index', {
       url: {
         user: req.user
