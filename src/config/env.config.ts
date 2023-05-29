@@ -4,6 +4,7 @@ dotenv.config();
 export const PORT: string = process.env.PORT || '5045';
 export const MONGO_URI: string = process.env.MONGODB_URI || '';
 export const JWT_SECRET: string = process.env.JWT_SECRET || 'abcdefgh'; 
+export const ROOT_URL: string = process.env.ROOT_URL || `http://127.0.0.1:${PORT}`; 
 
 export const secret: string = process.env.GITHUB_AUTH_SECRET || '';
 export const baseURL: string = process.env.GITHUB_AUTH_BASE_URL || '';

@@ -10,7 +10,6 @@ UrlRoute.get(
   URLController.getURL
 )
   .get('/:id', URLController.getById)
-  //   .get('/history')
   .post(
     '/',
     passport.authenticate(['jwt', 'anonymous']),

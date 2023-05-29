@@ -6,6 +6,7 @@ import urlModel from '../models/url.model';
 import { IURLArray } from '../utils/types.utils';
 import moment from 'moment';
 import URLController from '../controllers/url.controller';
+import { ROOT_URL } from '../config/env.config';
 
 const Shortener = Router();
 
@@ -23,7 +24,7 @@ Shortener.get(
       ...item,
       moment: moment(item.created_at).fromNow(),
     }));
-    
+
     res.status(200).render('index', {
       url: {
         user: req.user
@@ -56,7 +57,7 @@ Shortener.get(
 
       const shorten_code: string = phrase ? phrase.toLowerCase() : randomStr();
       const qrcode: string = await generateQR(
-        `http://127.0.0.1:5353/${shorten_code}`
+        `${ROOT_URL}/${shorten_code}`
       );
 
       if (req.user?.email) {
@@ -89,7 +90,7 @@ Shortener.get(
       await urlModel.create({
         user_id: req.user ? req.user.email : '',
         original_url,
-        shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+        shortened_url: `${ROOT_URL}/${shorten_code}`,
         qrcode,
       });
 
@@ -97,7 +98,7 @@ Shortener.get(
         url: {
           res: {
             original_url,
-            shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+            shortened_url: `${ROOT_URL}/${shorten_code}`,
             qrcode,
           },
           user: req.user

@@ -39,6 +39,7 @@ class AuthController {
       }
     })(req, res, next);
   }
+
   /**
    * creates a new user account
    * @param req
@@ -52,19 +53,16 @@ class AuthController {
   ): Promise<void> {
     passport.authenticate('signup', async (err: any, user: any) => {
       if (err) {
-        // console.log(err);
         res.status(403).send(err);
-        return
+        return;
       }
       if (!user) {
-        const error = new Error('Username or password is incorrect');
-        // console.log(error);
         res.status(403).send('User already exist');
-        return
+        return;
       }
       res.status(201).send('signup successful');
     })(req, res, next);
   }
 }
 
-export default AuthController
+export default AuthController;

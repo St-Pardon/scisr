@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import urlModel from '../models/url.model';
-import passport from 'passport';
 import isValidUrl from '../utils/validate-url.utils';
 import randomStr from '../utils/random-str.utils';
 import { generateQR } from '../utils/generateQR.utils';
+import { ROOT_URL } from '../config/env.config';
 
 class URLController {
   /**
@@ -95,7 +95,7 @@ class URLController {
     }
     const shorten_code: string = phrase ? phrase.toLowerCase() : randomStr();
     const qrcode: string = await generateQR(
-      `http://127.0.0.1:5353/${shorten_code}`
+      `${ROOT_URL}/${shorten_code}`
     );
 
     if (req.user?.email) {
@@ -117,7 +117,7 @@ class URLController {
     const data = await urlModel.create({
       user_id: req.user ? req.user.email : '',
       original_url,
-      shortened_url: `http://127.0.0.1:5353/${shorten_code}`,
+      shortened_url: `${ROOT_URL}/${shorten_code}`,
       qrcode,
     });
 
@@ -133,7 +133,7 @@ class URLController {
   static async redirectURL(req: Request, res: Response): Promise<void> {
     const { shorten_url } = req.params;
     const url = await urlModel.findOne({
-      shortened_url: `http://127.0.0.1:5353/${shorten_url}`,
+      shortened_url: `${ROOT_URL}/${shorten_url}`,
     });
 
     if (!url) {
