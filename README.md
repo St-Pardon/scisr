@@ -41,7 +41,7 @@ The people resonsible for bring this to live includes
 
 
 ## Contributions
-There are two (2) ways you can contribute to this projects, contributing through the Codebase, or buy coffee for the maintainers of this project. If you wish to contribute to codebase of this project, read the following [rules and gudieline](./Contribution.md) to get started. Else you can [buy us a coffee](https://www.buymeacoffee.com/pardonne) <br /><img src='./client/src/assets/bmc_qr.png' width='150px' alt='buymeacoffee qrcode' />
+There are two (2) ways you can contribute to this projects, contributing through the Codebase, or buy coffee for the maintainers of this project. If you wish to contribute to codebase of this project, read the following [rules and gudieline](./Contribution.md) to get started. Else you can [buy us a coffee](https://www.buymeacoffee.com/pardonne) <br /><img src='https://github.com/St-Pardon/Oi/raw/main/client/src/assets/bmc_qr.png' width='150px' alt='buymeacoffee qrcode' />
 
 ## License
-Project source code is licensed under the MIT license. You are free to fork this repository, edit the code, share and use it both for non-commercial and commercial purposes
+Project source code is licensed under the [MIT](./LICENSE) license. You are free to fork this repository, edit the code, share and use it both for non-commercial and commercial purposes
