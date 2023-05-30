@@ -11,9 +11,14 @@ Brief is the new black, this is what inspires the team at Scisr. In today’s wo
 - [Getting Started](#getting-started)
 - [Features](#features)
 ## Prerequisite
+- Text Editor/IDE
+- CLI/Termial
+- Node Runtime
+- Web Browser
 
 ## Getting Started
-
+### Set Up
+### Previews
 ## Features
 - **URL Shortening:**
 Scisr allows users to shorten URLs by pasting a long URL into the Scisr platform and a shorter URL gets automatically generated. The shortened URL is designed to be as short as possible, making it easy to share on social media or through other channels.
@@ -30,7 +35,7 @@ Scisr allows users to see the history of links they’ve created so they can eas
 The API Documentation is live with [Spotlight]() which contain the full list of the endpoints, their methods and some examples.
 
 ## Deployment
-The demo of this project is live at 
+The demo of this project is live at [scisr](https://scr-t99f.onrender.com). Enjoy 🚀 🚀 🚀 
 
 ## Author(s)
 The people resonsible for bring this to live includes
