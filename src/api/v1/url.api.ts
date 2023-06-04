@@ -15,6 +15,10 @@ UrlRoute.get(
     passport.authenticate(['jwt', 'anonymous']),
     URLController.shortenURL
   )
-  .delete('/:id', URLController.deleteById);
+  .delete(
+    '/:id',
+    passport.authenticate('jwt', { session: false }),
+    URLController.deleteById
+  );
 
 export default UrlRoute;
