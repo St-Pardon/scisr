@@ -4,7 +4,6 @@ import { IUser } from '../utils/types.utils';
 
 // Define user schema
 const userSchema: Schema<IUser> = new Schema<IUser>({
-  _id: Types.ObjectId,
   created_at: {
     type: Date,
     default: Date.now,

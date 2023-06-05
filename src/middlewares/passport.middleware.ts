@@ -89,24 +89,16 @@ passport
       async (req, email, password, done) => {
         try {
           const data = req.body;
-          const { username } = req.body;
-          // checks if user's username or email already exist
-          // const checkUsername = await User.findOne({ username });
           const checkMail = await User.findOne({ email });
-
-          // if (checkUsername) {
-          //   return done(null, false, { message: 'Username already exist' });
-          // }
 
           if (checkMail) {
             return done(null, false, { message: 'Email already exist' });
           }
-
+          
           const user = await User.create({ ...data, email, password });
 
           return done(null, user);
         } catch (error) {
-          console.log('some err');
           return done(error);
         }
       }

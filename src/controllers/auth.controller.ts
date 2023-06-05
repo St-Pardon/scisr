@@ -57,10 +57,10 @@ class AuthController {
         return;
       }
       if (!user) {
-        res.status(403).send('User already exist');
+        res.status(403).json({ err: 'User already exist' });
         return;
       }
-      res.status(201).send('signup successful');
+      res.status(201).json({ msg: 'signup successful', user });
     })(req, res, next);
   }
 }
