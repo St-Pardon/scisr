@@ -91,12 +91,12 @@ passport
           const data = req.body;
           const { username } = req.body;
           // checks if user's username or email already exist
-          const checkUsername = await User.findOne({ username });
+          // const checkUsername = await User.findOne({ username });
           const checkMail = await User.findOne({ email });
 
-          if (checkUsername) {
-            return done(null, false, { message: 'Username already exist' });
-          }
+          // if (checkUsername) {
+          //   return done(null, false, { message: 'Username already exist' });
+          // }
 
           if (checkMail) {
             return done(null, false, { message: 'Email already exist' });
