@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { isValidObjectId } from 'mongoose';
 // import { createClient } from 'redis';
 import urlModel from '../models/url.model';
 import isValidUrl from '../utils/validate-url.utils';
@@ -21,7 +22,7 @@ class URLController {
 
     const url = await urlModel.find({ user_id: email });
     if (!url) {
-      res.status(404).json({ err: 'User have not shortened url' });
+      res.status(404).json({ err: 'User have not shortened an url' });
       return;
     }
 
@@ -37,7 +38,7 @@ class URLController {
   static async getById(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
 
-    if (!id) {
+    if (!id || !isValidObjectId(id)) {
       res.status(400).json({ err: 'invalid id' });
       return;
     }
@@ -61,7 +62,7 @@ class URLController {
   static async deleteById(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
 
-    if (!id) {
+    if (!id || !isValidObjectId(id)) {
       res.status(400).json({ err: 'invalid id' });
       return;
     }
@@ -95,9 +96,7 @@ class URLController {
       return;
     }
     const shorten_code: string = phrase ? phrase.toLowerCase() : randomStr();
-    const qrcode: string = await generateQR(
-      `${ROOT_URL}/${shorten_code}`
-    );
+    const qrcode: string = await generateQR(`${ROOT_URL}/${shorten_code}`);
 
     if (req.user?.email) {
       urlExist = await urlModel.findOne({
@@ -127,9 +126,9 @@ class URLController {
 
   /**
    * redirects users to the original url
-   * @param req 
-   * @param res 
-   * @returns 
+   * @param req
+   * @param res
+   * @returns
    */
   static async redirectURL(req: Request, res: Response): Promise<void> {
     const { shorten_url } = req.params;

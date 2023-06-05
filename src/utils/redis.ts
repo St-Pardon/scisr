@@ -21,10 +21,21 @@ class RedisClient {
     return this.redisAlive;
   }
 
+  /**
+   * Retrieves item from cache
+   * @param key - key of item to be retrieved
+   * @returns 
+   */
   async get(key: string) {
     return promisify(this.client.get).bind(this.client)(key);
   }
 
+  /**
+   * Sets item to cache
+   * @param key - key of item to set
+   * @param value - value of item to set
+   * @param dur - duration for item to expire
+   */
   async set(key: string, value: any, dur: any) {
     promisify(this.client.setex).bind(this.client)(key, dur, value);
   }

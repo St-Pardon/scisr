@@ -4,12 +4,12 @@ import passport from 'passport';
 
 const UrlRoute = Router();
 
-UrlRoute.get(
-  '/',
-  passport.authenticate('jwt', { session: false }),
-  URLController.getURL
-)
-  .get('/:id', URLController.getById)
+UrlRoute.get('/:id', URLController.getById)
+  .get(
+    '/',
+    passport.authenticate('jwt', { session: false }),
+    URLController.getURL
+  )
   .post(
     '/',
     passport.authenticate(['jwt', 'anonymous']),
