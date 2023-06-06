@@ -6,7 +6,7 @@ const UrlRoute = Router();
 
 UrlRoute.get('/:id', URLController.getById)
   .get(
-    '/',
+    '/history',
     passport.authenticate('jwt', { session: false }),
     URLController.getURL
   )
