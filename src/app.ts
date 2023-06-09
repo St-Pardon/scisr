@@ -7,6 +7,7 @@ import indexRoute from './routes/index.route';
 import './middlewares/passport.middleware';
 import APIRoute from './api/index.api';
 import { limiter } from './middlewares/limiter.middleware';
+import { errHandler } from './middlewares/error.middleware';
 
 const app: Application = express();
 
@@ -28,6 +29,7 @@ app
   .set('view engine', 'ejs')
   .use(passport.initialize())
   .use(passport.session())
+  .use(errHandler)
   .use('/api', APIRoute)
   .use(indexRoute);
 

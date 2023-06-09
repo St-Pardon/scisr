@@ -47,3 +47,10 @@ export interface IURL extends Document {
 }
 
 export interface IURLArray extends Array<IURL> {}
+
+declare module 'mongoose' {
+  interface ConnectOptions {
+    useNewUrlParser?: boolean;
+    useUnifiedTopology?: boolean;
+  }
+}
