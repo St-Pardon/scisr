@@ -4,7 +4,7 @@ import { ConnectToDB } from './config/db.config';
 import redisClient from './config/redis.config';
 
 // redisClient.isAlive();
-redisClient.connect()
+redisClient.connect();
 ConnectToDB();
 
 app.listen(PORT, (): void => {
