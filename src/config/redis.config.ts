@@ -1,4 +1,5 @@
 import { createClient } from 'redis';
+import { RedisURI } from './env.config';
 
 class RedisClient {
   client: any;
@@ -9,7 +10,7 @@ class RedisClient {
 
   async connect() {
     try {
-      this.client = createClient();
+      this.client = createClient({ url: RedisURI });
 
       this.client.connect();
 

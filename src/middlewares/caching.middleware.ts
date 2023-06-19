@@ -16,7 +16,7 @@ export const UrlCache = async (
     res.json({ status: true, order: JSON.parse(cachedOrder) });
     return;
   }
-console.log('did not find cached item')
+
   // If item is not cached
   next();
 };

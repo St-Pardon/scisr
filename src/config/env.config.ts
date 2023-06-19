@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+export const RedisURI: string = process.env.REDIS_URI || 'redis://default:null@127.0.0.1:6379'
+
 export const PORT: string = process.env.PORT || '5045';
 export const MONGO_URI: string = process.env.MONGODB_URI || '';
 export const JWT_SECRET: string = process.env.JWT_SECRET || 'abcdefgh'; 
