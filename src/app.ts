@@ -5,7 +5,6 @@ import session from 'express-session';
 import helmet from 'helmet';
 import indexRoute from './routes/index.route';
 import './middlewares/passport.middleware';
-import APIRoute from './api/index.api';
 import { limiter } from './middlewares/limiter.middleware';
 import { errHandler } from './middlewares/error.middleware';
 
@@ -30,7 +29,6 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use(errHandler)
-  .use('/api', APIRoute)
   .use(indexRoute);
 
 export default app;
