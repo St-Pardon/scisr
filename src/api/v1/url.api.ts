@@ -1,14 +1,20 @@
 import { Router } from 'express';
-import URLController from '../../controllers/url.controller';
+import URLController from '../../controllers/api-controllers/url.controller';
 import passport from 'passport';
+import { UrlCache } from '../../middlewares/caching.middleware';
 
 const UrlRoute = Router();
 
-UrlRoute.get('/:id', URLController.getById)
+UrlRoute.get(
+  '/history',
+  passport.authenticate('jwt', { session: false }),
+  URLController.getURL
+)
   .get(
-    '/history',
+    '/:id',
     passport.authenticate('jwt', { session: false }),
-    URLController.getURL
+    UrlCache,
+    URLController.getById
   )
   .post(
     '/',
@@ -18,6 +24,7 @@ UrlRoute.get('/:id', URLController.getById)
   .delete(
     '/:id',
     passport.authenticate('jwt', { session: false }),
+    UrlCache,
     URLController.deleteById
   );
 

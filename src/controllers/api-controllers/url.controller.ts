@@ -6,6 +6,7 @@ import isValidUrl from '../../utils/validate-url.utils';
 import randomStr from '../../utils/random-str.utils';
 import { generateQR } from '../../utils/generateQR.utils';
 import { ROOT_URL } from '../../config/env.config';
+import redisClient from '../../config/redis.config';
 
 class URLController {
   /**
@@ -45,6 +46,9 @@ class URLController {
 
     const url = await urlModel.findOne({ _id: id });
 
+    const cacheKey = `url:${id}`;
+    redisClient.set(cacheKey, JSON.stringify(url), 60 * 60);
+
     if (!url) {
       res.status(404).json({ err: 'url not found' });
       return;
@@ -62,12 +66,16 @@ class URLController {
   static async deleteById(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
 
+    const cacheKey = `url:${id}`;
+
     if (!id || !isValidObjectId(id)) {
       res.status(400).json({ err: 'invalid id' });
       return;
     }
 
     await urlModel.deleteOne({ _id: id });
+
+    redisClient.del(cacheKey);
 
     res.status(200).send('url deleted');
   }
@@ -141,6 +149,7 @@ class URLController {
       return;
     }
 
+    // this route is not cached becasue caching would prevent updatinng the click count
     url.clicks = url.clicks + 1;
     await url.save();
 
