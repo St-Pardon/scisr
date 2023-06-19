@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { isValidObjectId } from 'mongoose';
 // import { createClient } from 'redis';
-import urlModel from '../models/url.model';
-import isValidUrl from '../utils/validate-url.utils';
-import randomStr from '../utils/random-str.utils';
-import { generateQR } from '../utils/generateQR.utils';
-import { ROOT_URL } from '../config/env.config';
+import urlModel from '../../models/url.model';
+import isValidUrl from '../../utils/validate-url.utils';
+import randomStr from '../../utils/random-str.utils';
+import { generateQR } from '../../utils/generateQR.utils';
+import { ROOT_URL } from '../../config/env.config';
 
 class URLController {
   /**

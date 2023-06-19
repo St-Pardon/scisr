@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config/env.config';
+import { JWT_SECRET } from '../../config/env.config';
 
 class AuthController {
   /**
