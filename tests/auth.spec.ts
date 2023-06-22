@@ -36,7 +36,7 @@ describe('Authenticate User', () => {
     expect(res.body.user).toHaveProperty('first_name', 'John');
     expect(res.body.user).toHaveProperty('last_name', 'doe');
     expect(res.body.user).toHaveProperty('email', 'john@doe.com');
-  }, 5000); 
+  }, 5000);
 
   it("Shouldn't signup a user", async () => {
     const res = await request(app)
@@ -54,7 +54,7 @@ describe('Authenticate User', () => {
   // Tests for Signin endpoints
   it('should login a user', async () => {
     // create user in out db
-    const user = await User.create({
+    await User.create({
       first_name: 'John',
       last_name: 'doe',
       email: 'john@doe.com',
@@ -75,7 +75,7 @@ describe('Authenticate User', () => {
 
   it("shouldn't login a user", async () => {
     // create user in out db
-    const user = await User.create({
+    await User.create({
       first_name: 'John',
       last_name: 'doe',
       email: 'john@doe.com',
@@ -90,7 +90,7 @@ describe('Authenticate User', () => {
         password: '123456',
       });
 
-    console.log(res.status, res.text, res.body);
+    // console.log(res.status, res.text, res.body);
     expect(res.status).toBe(500);
   });
 });
