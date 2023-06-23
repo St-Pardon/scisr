@@ -92,7 +92,7 @@ class URLController {
     res: Response,
     next: NextFunction
   ): Promise<void> {
-    const { original_url, phrase } = req.body;
+    const { original_url, custom: phrase } = req.body;
     let urlExist;
 
     if (!original_url) {
@@ -100,7 +100,11 @@ class URLController {
       return;
     }
     if (!isValidUrl(original_url)) {
-      res.status(400).json({ err: 'Invalid URL, Try Again' });
+      res
+        .status(400)
+        .json({
+          err: 'Invalid URL, Try Again with a valid url e.g https://google.com',
+        });
       return;
     }
     const shorten_code: string = phrase ? phrase.toLowerCase() : randomStr();
