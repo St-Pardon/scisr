@@ -26,6 +26,13 @@ class RedisClient {
     }
   }
 
+  async disconnect() {
+    try {
+      this.client.disconnect();
+    } catch (error) {
+      console.log(error);
+    }
+  }
   /**
    * Retrieves item from cache
    * @param key - key of item to be retrieved
