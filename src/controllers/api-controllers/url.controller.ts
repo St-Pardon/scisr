@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { isValidObjectId } from 'mongoose';
-// import { createClient } from 'redis';
 import urlModel from '../../models/url.model';
 import isValidUrl from '../../utils/validate-url.utils';
 import randomStr from '../../utils/random-str.utils';
