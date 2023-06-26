@@ -29,6 +29,7 @@ To run this project, the following tools must be installed on your machine:
 - API Platform: Application, extention or web base API Platform will do. check out [Postman](https://www.postman.com/) and [ThunderClient](https://www.thunderclient.com/)
 - MongoDb: if not already installed, install from [here](https://www.mongodb.com/) or connect to [MongoDb Atlas](https://www.mongodb.com/cloud/atlas/register)
 - Web Browser
+- Redis-Server - if not already installed, install from [here](https://redis.io/)
 
 ### Set Up
 
@@ -55,7 +56,19 @@ touch .env
 ```
 Open the `.env` file on you text editor and create the variables using the this [sampledotenv](./sampledotenv)
 
-**`Step 5:`** Start the application
+**`Step 5:`** Start your redis server
+```bash
+redis-server
+...
+```
+or
+```bash
+redis-server &
+```
+to start the redis server behind the scene
+
+
+**`Step 6:`** Start the application
 ```bash
 npm run start:dev
 ...
