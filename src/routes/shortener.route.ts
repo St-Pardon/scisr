@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import URLController from '../controllers/api-controllers/url.controller';
-import ShortenerController from '../controllers/views-controllers/shortener.conntroller';
+import ShortenerController from '../controllers/views-controllers/shortener.controller';
 
 const Shortener = Router();
 

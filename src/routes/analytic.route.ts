@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import ShortenerController from '../controllers/views-controllers/shortener.conntroller';
+import ShortenerController from '../controllers/views-controllers/shortener.controller';
 
 const Analytics = Router();
 
