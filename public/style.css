@@ -208,6 +208,16 @@ a {
   width: 100%;
 }
 
+.long {
+  max-width: 300px;
+}
+.long p {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .history table {
   width: 100%;
   margin: 0 auto;
@@ -243,7 +253,13 @@ a {
 
 /* analytics  */
 .main_analytic {
+  margin-top: 30px;
   text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
 }
 
 .btn2 {
@@ -264,7 +280,7 @@ a {
   background-color: aliceblue;
   padding: 50px 0;
 }
-.feature .title{
+.feature .title {
   text-align: center;
   font-size: 1.4rem;
 }
@@ -290,7 +306,7 @@ a {
   gap: 10px;
 }
 
-.cards div{
+.cards div {
   width: 400px;
 }
 
@@ -304,5 +320,9 @@ a {
 
 /* footer  */
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  min-height: 50px;
 }
