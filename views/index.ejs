@@ -29,7 +29,7 @@
       <% if (!url.user){ %>
       <nav class="nav">
         <a href="https://documenter.getpostman.com/view/18352130/2s93sjUUX7" target="_blank"><p>Docs</p></a>
-        <a href="/auth/login"><button class="signin">Signin</button></a>
+        <a href="/auth/login"><button class="signin">Sign in</button></a>
       </nav>
       <% } %>
 
@@ -160,7 +160,7 @@
             <% url.history.forEach(function(url){ %>
               <tr>
                 <td><img src=<%= url._doc.qrcode %> alt="qrcode"> </td>
-                <td class="long"><a href=<%= url._doc.original_url %> target="_blank"><%= url._doc.original_url %></a></td>
+                <td class="long"><a href=<%= url._doc.original_url %> target="_blank"><p><%= url._doc.original_url %></p></a></td>
                 <td><a href=<%= url._doc.shortened_url %> target="_blank"><%= url._doc.shortened_url %></a></td>
                 <td><%= url._doc.clicks %></td>
                 <td><%= url.moment %></td>

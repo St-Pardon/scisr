@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scisr | Analytics</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <header class="header">
@@ -21,7 +21,7 @@
         </div>
         <% if (url.user){ %>
         <nav class="nav">
-          <img src=<%=url.user.dp%> alt="dp" width="40px">
+          <img src="<%=url.user.dp%>" alt="dp" width="40px">
           <p><%=url.user.name%></p>
         </nav>
         <% } %>
@@ -35,15 +35,21 @@
         <!-- // auth username and photo -->
     </header>
     <main class="main_analytic">
+      <div>
         <h2>Analytics</h2>
         <p>Here are the details and performance of your link</p>
-          
-        <img src=<%=url.res.urlData.qrcode%> width="200px" alt="qrcode">
+      </div>
+      <div>
+        
+        <figure>
+          <img src=<%=url.res.urlData.qrcode%> width="200px" alt="qrcode">
+        </figure> 
         <div class="downl">
-            <a href=<%=url.res.urlData.qrcode%> type="image/png" download="qrcode.png">
-                <button class="btn btn2"><img src="/assets/file-download-svgrepo-com.svg" alt="download" class="icon2"> Download</button>
-            </a>
+          <a href=<%=url.res.urlData.qrcode%> type="image/png" download="qrcode.png">
+            <button class="btn btn2"><img src="/assets/file-download-svgrepo-com.svg" alt="download" class="icon2"> Download</button>
+          </a>
         </div>
+      </div>
         <div>
             <h3>Shortened URL</h3>
             <a href=<%=url.res.urlData.shortened_url%>><p><%=url.res.urlData.shortened_url%></p></a>
