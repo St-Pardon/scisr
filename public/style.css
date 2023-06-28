@@ -71,7 +71,7 @@ a {
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
 }
-.intro h1 span {
+.intro h1 span, .auth-intro span {
   font-family: 'Bruno Ace', cursive;
   color: green;
 }
@@ -176,7 +176,7 @@ a {
   text-align: center;
 }
 
-.login img {
+.login-img {
   width: 200px;
 }
 
@@ -200,6 +200,52 @@ a {
   padding: 10px;
   width: 50px;
 }
+
+.auth-form{
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.auth-form input{
+  width: 100%;
+  padding: 7px 5px;
+  font-size: 18px;
+}
+
+.auth-form label{
+  font-size: 1.2rem;
+}
+
+.auth-form input[type="submit"]{
+  border: none;
+  background-color: green;
+  color: white;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+
+.auth-form input[type="submit"]:hover{
+  opacity: 80%;
+}
+
+.auth-form div{
+  margin: 10px 0;
+}
+
+.auth-intro {
+  font-size: 1.3rem;
+  text-align: center;
+}
+.auth-form .hr{
+  margin-top: 30px;
+  text-align: center;
+}
+
+.error{
+  text-align: center;
+  color: red;
+}
+
 
 /* history  */
 .history {

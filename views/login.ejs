@@ -8,15 +8,51 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <section class="login">
-      <img src="/assets/login.svg" alt="login" />
-      <p>Get full analytic report to see how your link is performing</p>
-      <a href="/auth/google">
+    <main>
+      <section class="auth-intro">
+        <img class="login-img" src="/assets/login.svg" alt="login" />
+        <p>
+          Sign in to <span>Scisr</span> to get full analytic report to see how
+          your link is performing
+        </p>
+      </section>
+      <form action="/auth/login" method="post" class="auth-form">
+        <% if (error){ %>
+        <p class="error"><%= error %></p>
+        <% } %>
         <div>
-          <img src="/assets/google-color-svgrepo-com.svg" alt="Google" />
-          <span>Continue With Google</span>
+          <label for="email">Email</label>
+          <br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="someone@example.com"
+            required
+          />
         </div>
-      </a>
-    </section>
+        <div>
+          <label for="password">Password</label>
+          <br />
+          <input type="password" name="password" id="password" required />
+        </div>
+        <input type="submit" value="Sign in" />
+        <div>
+          <p>Don't have an account? <a href="/auth/signup">sign up</a></p>
+        </div>
+        <div class="hr">
+          <hr />
+          <p>Or</p>
+        </div>
+      </form>
+      <section class="login">
+        <a href="/auth/google">
+          <div>
+            <img src="/assets/google-color-svgrepo-com.svg" alt="Google" />
+            <span>Continue With Google</span>
+          </div>
+        </a>
+      </section>
+    </main>
   </body>
 </html>
