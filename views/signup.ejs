@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="auth-intro">
+        <img class="login-img" src="/assets/login.svg" alt="login" />
+        <p>
+          Signup for <span>Scisr</span> to get full analytic report to see how
+          your link is performing
+        </p>
+      </section>
+      <form action="/auth/signup" method="post" class="auth-form">
+        <p></p>
+        <div>
+          <label for="first-name">First Name</label>
+          <br />
+          <input
+            type="first-name"
+            name="first_name"
+            id="first-name"
+            placeholder="John"
+            required
+          />
+        </div>
+        <div>
+          <label for="last-name">Last Name</label>
+          <br />
+          <input
+            type="last-name"
+            name="last_name"
+            id="last-name"
+            placeholder="Doe"
+            required
+          />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="someone@example.com"
+            required
+          />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <br />
+          <input type="password" name="password" id="password" required />
+        </div>
+        <input type="submit" value="Signup" />
+        <div>
+          <p>Already have an account? <a href="/auth/login">sign in</a></p>
+        </div>
+        <div class="hr">
+          <hr />
+          <p>Or</p>
+        </div>
+      </form>
+      <section class="login">
+        <a href="/auth/google">
+          <div>
+            <img src="/assets/google-color-svgrepo-com.svg" alt="Google" />
+            <span>Continue With Google</span>
+          </div>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
