@@ -7,6 +7,7 @@ import indexRoute from './routes/index.route';
 import './middlewares/passport.middleware';
 import { limiter } from './middlewares/limiter.middleware';
 import { errHandler } from './middlewares/error.middleware';
+import { JWT_SECRET } from './config/env.config';
 
 const app: Application = express();
 
@@ -18,9 +19,10 @@ app
   .use(express.urlencoded({ extended: false }))
   .use(
     session({
-      secret: 'passport google',
+      secret: JWT_SECRET,
       resave: false,
       saveUninitialized: false,
+      cookie: { maxAge: 60 * 60 * 1000 }
     })
   )
   .use(express.static('public'))
