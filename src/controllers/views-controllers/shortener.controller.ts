@@ -42,6 +42,23 @@ class ShortenerController {
   }
 
   /**
+   * deletes shortener url for a user
+   * @param req - request object
+   * @param res - response object
+   * @param next - next function
+   */
+  static async DeleteURL(
+    req: Request & { user?: any },
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    const { url_id } = req.params;
+    await urlModel.deleteOne({ _id: url_id });
+
+    res.redirect('/');
+  }
+
+  /**
    * get shortener url history for a user
    * @param req - request object
    * @param res - response object

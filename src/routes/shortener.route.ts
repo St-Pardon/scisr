@@ -6,6 +6,7 @@ const Shortener = Router();
 
 Shortener.get('', ShortenerController.getHistory)
   .post('', ShortenerController.shortenLink)
+  .delete('/:url_id', ShortenerController.DeleteURL)
   .get('/:shorten_url', URLController.redirectURL);
 
 export default Shortener;

@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
-
+interface SessionData {
+  user: any; // Replace 'any' with the actual type of your user data
+}
 class AuthController {
   /**
    * Authenticate user by signin
@@ -56,6 +58,22 @@ class AuthController {
       }
       res.redirect('/auth/login');
     })(req, res, next);
+  }
+
+  /**
+   * logs a user out of the application
+   * @param req 
+   * @param res 
+   */
+  static logout(req: Request, res: Response): void {
+    req.logout((err) => {
+      if (err) {
+        console.error(err);
+        res.redirect('/');
+        return;
+      }
+      res.redirect('/');
+    });
   }
 }
 
